@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Import for SystemChrome
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'core/routes/routes.dart';
 import 'core/utils/app_color.dart';
-import 'core/utils/routes.dart';
 
 void main() {
   // Set the status bar color
@@ -15,7 +15,7 @@ void main() {
   );
 
   runApp(
-    ProviderScope(
+    const ProviderScope(
       child: MyApp(),
     ),
   );
@@ -29,8 +29,9 @@ class MyApp extends ConsumerWidget {
     final router = ref.watch(routerProvider); 
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Stock market',
       theme: ThemeData(
+       
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

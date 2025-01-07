@@ -4,14 +4,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../auth/login/presentation/screens/login.dart';
 import '../../auth/signup/presentation/screens/signup.dart';
 import '../../landingpage/presentation/screens/landing_screen.dart';
+import '../utils/text_constants.dart';
 
 
 final routerProvider = Provider<RouteFactory>((ref) {
   return (settings) {
     final Map<String, WidgetBuilder> routes = {
-      '/': (context) =>  LandingScreen(),
-      '/signup': (context) =>  SignUp(),
-      '/login': (context) => const LoginScreen(),
+      TextConstants.initialRoute: (context) =>  LandingScreen(),
+      TextConstants.routesignup: (context) =>  const SignUp(),
+      TextConstants.routesignin: (context) => const LoginScreen(),
     };
 
     

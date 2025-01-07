@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+import '../../../../core/presentation/gradient_text.dart';
 import '../../../../core/presentation/stripe_group.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_gradient.dart';
-import '../../../../core/utils/gradient_text.dart';
+import '../../../../core/utils/app_textstyle.dart';
 import '../../../../core/utils/text_constants.dart';
 import '../../widgets/login_feild.dart';
 
@@ -15,10 +18,45 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
+  final _LoginformKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+   bool _isButtonDisabled = false;
+   Timer? _debounceTimer;
+
+  void _handleButtonClick() {
+    if (_isButtonDisabled) return; 
+
+    setState(() {
+      _isButtonDisabled = true; 
+    });
+
+    if (_LoginformKey.currentState!.validate()) {
+      
+      print('Email: ${_emailController.text}');
+      print('Password: ${_passwordController.text}');
+      print('navigating: to home page...');
+    } else {
+      print('Validation failed');
+    }
+
+  
+    _debounceTimer = Timer(const Duration(seconds: 2), () {
+      setState(() {
+        _isButtonDisabled = false; 
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _debounceTimer?.cancel(); 
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,16 +77,13 @@ class _LoginScreenState extends State<LoginScreen> {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Form(
-                  key: _formKey,
+                  key: _LoginformKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const GradientText(
                         text: TextConstants.createaccount,
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700,
-                        ),
+                        style: AppTextStyles.heading, 
                         gradient: AppGradients.textGradient,
                       ),
                       const SizedBox(height: 20),
@@ -62,22 +97,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         alignment: Alignment.centerRight,
                         child: GestureDetector(
                           onTap: () {
-                            print('forget password');
+                            print('Forget Password');
                           },
-                          child: const Text(
+                          child: Text(
                             TextConstants.forgetpassword,
-                            style: TextStyle(
-                              color: AppColors.gradient1,
-                            )),
+                            style: AppTextStyles.body.copyWith(
+                              color: AppColors.gradient1, 
+                            ),
+                          ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
 
-           
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
@@ -85,19 +120,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    
                     ElevatedButton(
                       onPressed: () {
-                    
-                        if (_formKey.currentState!.validate()) {
-                      
-                         
-                          print('Email: ${_emailController.text}');
-                          print('Password: ${_passwordController.text}');
-                        } else {
-                          
-                          print('Validation failed');
-                        }
+                       _handleButtonClick();
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -109,38 +134,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           horizontal: 104.0,
                         ),
                       ),
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: const Text(TextConstants.loginButton, style:   AppTextStyles.ButtonText,),
                     ),
                     const SizedBox(height: 10),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          TextConstants.noaccount,
-                          style: TextStyle(color: AppColors.white),
-                        ),
+                        Text(TextConstants.noaccount, style: AppTextStyles.body.copyWith(color: AppColors.white)),
+                        SizedBox(width: 5,),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, '/signup');
-                            print("Navigating to signup Screen");
+                            Navigator.pushNamed(context, TextConstants.routesignup);
+                            print('Navigating to Signup Screen');
                           },
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(width: 10),
-                              Text(
-                              TextConstants.signUp,
-                                style: TextStyle(color: AppColors.gradient1),
-                              ),
-                            ],
+                          child: Text(
+                            TextConstants.signUp,
+                            style: AppTextStyles.smallText.copyWith(
+                              color: AppColors.gradient1,
+                            ),
                           ),
                         ),
                       ],

@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:stock_market/core/presentation/stripe_group.dart';
 
-import '../../../auth/signup/presentation/screens/signup.dart';
 import '../../../core/utils/app_gradient.dart';
+import '../../../core/utils/text_constants.dart';
 import '../../widgets/landing_text.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -18,10 +18,8 @@ class _LandingScreenState extends State<LandingScreen> {
     super.initState();
     
     Timer(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => SignUp()),
-      );
+   
+      Navigator.pushNamed(context, TextConstants.routesignup);
     });
   }
 

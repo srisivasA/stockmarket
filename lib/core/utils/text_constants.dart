@@ -8,6 +8,10 @@ class TextConstants {
   static const String forgetpassword = 'Forget password?';
   static const String noaccount = "Didn't have an account?";
   static const String signUp = 'Sign up';
+  static const String routesignin = '/login';
+  static const String loginButton = 'Login';
+  static const String initialRoute = '/';
+  static const String routesignup = '/signup';
   static const String signin = 'Sign in';
   static const String haveanaccount = "Already have an account?";
   static const String expertiselevel = "Expertise level";
