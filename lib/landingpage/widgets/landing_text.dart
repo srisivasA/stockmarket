@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_market/core/utils/app_gradient.dart';
 
-import '../../core/presentation/gradient_text.dart';
+import '../../core/presentation/widgets/gradient_text.dart';
 import '../../core/utils/app_textstyle.dart';
 import '../../core/utils/text_constants.dart';
 

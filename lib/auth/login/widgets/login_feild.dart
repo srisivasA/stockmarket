@@ -50,16 +50,16 @@ class _SignUpFieldsState extends State<SignUpFields> {
             style: const TextStyle(fontSize: 16, color: AppColors.white),
             decoration: _inputDecoration('Email'),
             keyboardType: TextInputType.emailAddress,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Email cannot be empty';
-              }
-              if (!RegExp(r"^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
-                  .hasMatch(value)) {
-                return 'Enter a valid email';
-              }
-              return null;
-            },
+            // validator: (value) {
+            //   if (value == null || value.isEmpty) {
+            //     return 'Email cannot be empty';
+            //   }
+            //   if (!RegExp(r"^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
+            //       .hasMatch(value)) {
+            //     return 'Enter a valid email';
+            //   }
+            //   return null;
+            // },
           ),
           const SizedBox(height: 20),
           TextFormField(
@@ -80,15 +80,15 @@ class _SignUpFieldsState extends State<SignUpFields> {
                 },
               ),
             ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Password cannot be empty';
-              }
-              if (value.length < 6) {
-                return 'Password must be at least 6 characters long';
-              }
-              return null;
-            },
+            // validator: (value) {
+            //   if (value == null || value.isEmpty) {
+            //     return 'Password cannot be empty';
+            //   }
+            //   if (value.length < 6) {
+            //     return 'Password must be at least 6 characters long';
+            //   }
+            //   return null;
+            // },
           ),
         ],
       ),

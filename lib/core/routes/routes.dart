@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../auth/login/presentation/screens/login.dart';
 import '../../auth/signup/presentation/screens/signup.dart';
+import '../../expertise/presentation/screens/expert_screen.dart';
 import '../../landingpage/presentation/screens/landing_screen.dart';
 import '../utils/text_constants.dart';
 
@@ -13,6 +14,7 @@ final routerProvider = Provider<RouteFactory>((ref) {
       TextConstants.initialRoute: (context) =>  LandingScreen(),
       TextConstants.routesignup: (context) =>  const SignUp(),
       TextConstants.routesignin: (context) => const LoginScreen(),
+      TextConstants.expertScreen:(context) => ExpertScreen()
     };
 
     
@@ -26,7 +28,7 @@ final routerProvider = Provider<RouteFactory>((ref) {
 
     return MaterialPageRoute(
       builder: (context) => const Scaffold(
-        body: Center(child: Text('404 - Page Not Found')),
+        body: Center(child: Text(TextConstants.pagenotfound)),
       ),
     );
   };

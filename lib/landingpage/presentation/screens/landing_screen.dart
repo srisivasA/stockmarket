@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:stock_market/core/presentation/stripe_group.dart';
+import 'package:stock_market/core/presentation/widgets/stripe_group.dart';
 
 import '../../../core/utils/app_gradient.dart';
 import '../../../core/utils/text_constants.dart';

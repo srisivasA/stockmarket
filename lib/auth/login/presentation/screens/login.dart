@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../../../core/presentation/gradient_text.dart';
-import '../../../../core/presentation/stripe_group.dart';
+import '../../../../core/presentation/widgets/gradient_text.dart';
+import '../../../../core/presentation/widgets/stripe_group.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_gradient.dart';
 import '../../../../core/utils/app_textstyle.dart';
@@ -35,9 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (_LoginformKey.currentState!.validate()) {
       
-      print('Email: ${_emailController.text}');
-      print('Password: ${_passwordController.text}');
-      print('navigating: to home page...');
+      Navigator.pushNamed(context, TextConstants.expertScreen);
     } else {
       print('Validation failed');
     }

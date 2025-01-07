@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:stock_market/core/utils/app_textstyle.dart';
 
-import '../../../../core/presentation/gradient_text.dart';
-import '../../../../core/presentation/stripe_group.dart';
+import '../../../../core/presentation/widgets/gradient_text.dart';
+import '../../../../core/presentation/widgets/stripe_group.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_gradient.dart';
 import '../../../../core/utils/text_constants.dart';
@@ -137,7 +137,7 @@ class _SignUpState extends State<SignUp> {
                             children: [
                               SizedBox(width: 10),
                               Text(
-                                TextConstants.signUp,
+                                TextConstants.signin,
                                 style: AppTextStyles.smallText.copyWith(
                                   color: AppColors.gradient1,
                                 ),

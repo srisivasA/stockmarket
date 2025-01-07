@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'stripe.dart';
 
 class StripeGroup extends StatelessWidget {
-  const StripeGroup({Key? key}) : super(key: key);
+  const StripeGroup({super.key}) ;
 
   @override
   Widget build(BuildContext context) {
